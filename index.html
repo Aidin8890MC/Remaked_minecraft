@@ -126,6 +126,7 @@ body{
     text-decoration:none;
     padding:12px;
     border-radius:10px;
+    cursor:pointer;
 }
 </style>
 </head>
@@ -160,14 +161,13 @@ body{
 ماینکرافت ریمیک و ادیت شده کاملا دست ساز با اسکین پک های کیپ دار و خاص با موزیک فانک پس زمینه و تغییر کردن پانوراما، نسخه ۱.۲۱.۵۱ که برای ورود به سرور اکانت نمی‌خواهد.
 </p>
 
-<a class="download"
-href="https://drive.usercontent.google.com/download?id=1rpNoigmagD4OC46hVqG3uOb1Ip-GlXuW&export=download&authuser=0"
-target="_blank">
+<a class="download" onclick="copyLink('https://drive.usercontent.google.com/download?id=1rpNoigmagD4OC46hVqG3uOb1Ip-GlXuW&export=download&authuser=0')">
 دانلود
 </a>
 
 </div>
 </div>
+
 <div class="card">
 
 <img src="MineSkin.jpg">
@@ -180,9 +180,7 @@ target="_blank">
 ماینکرافتی کلون شده و بدون نیاز به اکانت برای ورود به سرور و با اسکین پک های کیپ دار و جدید توسط تیم ما
 </p>
 
-<a class="download"
-href="https://drive.usercontent.google.com/download?id=1C_glzfMrFxYXbhjJpJ9MRTJtSTRUmXcW&export=download&authuser=0"
-target="_blank">
+<a class="download" onclick="copyLink('https://drive.usercontent.google.com/download?id=1C_glzfMrFxYXbhjJpJ9MRTJtSTRUmXcW&export=download&authuser=0')">
 دانلود
 </a>
 
@@ -217,7 +215,7 @@ target="_blank">
 کلاینتی ساده برای اس ام پی ها و کاستوم شده توسط تیم ما
 </p>
 
-<a class="download" href="https://drive.usercontent.google.com/download?id=1kXJNrXMwOxA-6WFQ0a3zqzrrRfkLGBBR&export=download&authuser=3" target="_blank">
+<a class="download" onclick="copyLink('https://drive.usercontent.google.com/download?id=1kXJNrXMwOxA-6WFQ0a3zqzrrRfkLGBBR&export=download&authuser=3')">
 دانلود
 </a>
 
@@ -230,6 +228,36 @@ target="_blank">
 
 let dark=false;
 let page="main";
+
+/* ✅ FIXED 100% WORKING COPY SYSTEM */
+function copyLink(link){
+
+    const textArea = document.createElement("textarea");
+    textArea.value = link;
+
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+
+    textArea.focus();
+    textArea.select();
+
+    let success = false;
+
+    try {
+        success = document.execCommand("copy");
+    } catch (e) {
+        success = false;
+    }
+
+    document.body.removeChild(textArea);
+
+    if (success) {
+        alert("لینک کپی شد\nحالا در گوگل Paste کنید و دانلود کنید");
+    } else {
+        alert("کپی نشد، لطفاً لینک را دستی کپی کنید");
+    }
+}
 
 function toggleTheme(){
     dark=!dark;
@@ -264,4 +292,4 @@ function goCheat(){
 </script>
 
 </body>
-</html>
+    </html>
