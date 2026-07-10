@@ -27,10 +27,26 @@ body{
     transition: 0.3s;
 }
 
+.mcworlds{
+    background:linear-gradient(to bottom, #2ecc71, #a3e4d7, #e8f8f5, #ffffff);
+    min-height:100vh;
+    color:black;
+    transition: 0.3s;
+}
+
+.mcpacks{
+    background:linear-gradient(to bottom, #f1c40f, #f9e79f, #fef9e7, #ffffff);
+    min-height:100vh;
+    color:black;
+    transition: 0.3s;
+}
+
 /* DARK MODE FIX */
 .dark,
 .dark .main,
-.dark .cheat {
+.dark .cheat,
+.dark .mcworlds,
+.dark .mcpacks {
     background: #121212 !important;
     color: white !important;
 }
@@ -149,6 +165,8 @@ body{
 <div class="menu" id="menu1">
     <a href="#" onclick="goMain()">Minecraft Remaked</a>
     <a href="#" onclick="goCheat()">Cheat Clients</a>
+    <a href="#" onclick="goWorlds()">McWorlds</a>
+    <a href="#" onclick="goPacks()">McPacks</a>
 </div>
 
 <div class="card">
@@ -201,6 +219,8 @@ body{
 <div class="menu" id="menu2">
     <a href="#" onclick="goMain()">Minecraft Remaked</a>
     <a href="#" onclick="goCheat()">Cheat Clients</a>
+    <a href="#" onclick="goWorlds()">McWorlds</a>
+    <a href="#" onclick="goPacks()">McPacks</a>
 </div>
 
 <div class="card">
@@ -221,9 +241,6 @@ body{
 
 </div>
 </div>
-<!-- ======================= -->
-<!-- کارت جدید - فقط قسمت‌های مشخص شده را تغییر بده -->
-<!-- ======================= -->
 
 <div class="card">
 
@@ -244,13 +261,10 @@ onclick="copyLink('https://drive.google.com/file/d/1Ous0EOhBXGbUBdAoENTfO7ZKUFY4
 
 </div>
 </div>
-<!-- ======================= -->
-<!-- کارت جدید - فقط قسمت‌های مشخص شده را تغییر بده -->
-<!-- ======================= -->
 
 <div class="card">
 
-<img src="Shafagh.jpg">
+<img src="shafagh.jpg">
 
 <div class="content">
 
@@ -265,6 +279,60 @@ onclick="copyLink('https://drive.google.com/file/d/1B4qE3wuBP3quY-gi-DJ6Q23ZA3B3
 دانلود
 </a>
 
+</div>
+</div>
+</div>
+
+<div id="worldsPage" class="page mcworlds" style="display:none;">
+
+<div class="topbar">
+    <button onclick="toggleMenu()">☰</button>
+
+    <div>McWorlds</div>
+
+    <button class="theme-btn" id="themeBtn3" onclick="toggleTheme()">D</button>
+</div>
+
+<div class="menu" id="menu3">
+    <a href="#" onclick="goMain()">Minecraft Remaked</a>
+    <a href="#" onclick="goCheat()">Cheat Clients</a>
+    <a href="#" onclick="goWorlds()">McWorlds</a>
+    <a href="#" onclick="goPacks()">McPacks</a>
+</div>
+
+<div class="card">
+<img src="GTABedrock.jpg">
+<div class="content">
+<h2>GTA V bedrock Edition</h2>
+<p>مپ جی تی ای وی با بیشترین جزئیات برای بدراک و توسط ما</p>
+<a class="download" onclick="copyLink('https://t.me/Remaked_Minecraft/68')">دانلود</a>
+</div>
+</div>
+</div>
+
+<div id="packsPage" class="page mcpacks" style="display:none;">
+
+<div class="topbar">
+    <button onclick="toggleMenu()">☰</button>
+
+    <div>McPacks</div>
+
+    <button class="theme-btn" id="themeBtn4" onclick="toggleTheme()">D</button>
+</div>
+
+<div class="menu" id="menu4">
+    <a href="#" onclick="goMain()">Minecraft Remaked</a>
+    <a href="#" onclick="goCheat()">Cheat Clients</a>
+    <a href="#" onclick="goWorlds()">McWorlds</a>
+    <a href="#" onclick="goPacks()">McPacks</a>
+</div>
+
+<div class="card">
+<img src="PERSIANMC.jpg">
+<div class="content">
+<h2>ریسورس پک ماینکرافت فارسی</h2>
+<p>یسورس پک ماینکرافت فارسی ، ماینکرافتت کامل با این فارسی میشه تا نسخه ۱.۲۱.۹۲ پشتیبانی میشه . (این ریسورس پک ساخت ما نیست)</p>
+<a class="download" onclick="copyLink('https://t.me/Remaked_Minecraft/106')">دانلود</a>
 </div>
 </div>
 </div>
@@ -310,28 +378,55 @@ function toggleTheme(){
 
     document.getElementById("themeBtn").innerText = dark ? "L" : "D";
     document.getElementById("themeBtn2").innerText = dark ? "L" : "D";
+    document.getElementById("themeBtn3").innerText = dark ? "L" : "D";
+    document.getElementById("themeBtn4").innerText = dark ? "L" : "D";
 }
 
 function toggleMenu(){
     if(page==="main"){
         document.getElementById("menu1").classList.toggle("active");
-    }else{
+    }else if(page==="cheat"){
         document.getElementById("menu2").classList.toggle("active");
+    }else if(page==="worlds"){
+        document.getElementById("menu3").classList.toggle("active");
+    }else if(page==="packs"){
+        document.getElementById("menu4").classList.toggle("active");
     }
 }
 
 function goMain(){
     page="main";
+    hideAllPages();
     document.getElementById("mainPage").style.display="block";
-    document.getElementById("cheatPage").style.display="none";
     toggleMenu();
 }
 
 function goCheat(){
     page="cheat";
-    document.getElementById("mainPage").style.display="none";
+    hideAllPages();
     document.getElementById("cheatPage").style.display="block";
     toggleMenu();
+}
+
+function goWorlds(){
+    page="worlds";
+    hideAllPages();
+    document.getElementById("worldsPage").style.display="block";
+    toggleMenu();
+}
+
+function goPacks(){
+    page="packs";
+    hideAllPages();
+    document.getElementById("packsPage").style.display="block";
+    toggleMenu();
+}
+
+function hideAllPages(){
+    document.getElementById("mainPage").style.display="none";
+    document.getElementById("cheatPage").style.display="none";
+    document.getElementById("worldsPage").style.display="none";
+    document.getElementById("packsPage").style.display="none";
 }
 
 </script>
